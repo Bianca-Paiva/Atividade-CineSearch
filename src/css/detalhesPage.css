@@ -196,11 +196,11 @@ main {
     left: 0;
     top: 50%;
     transform: translateY(-50%); /* Garante que a barra fique perfeitamente centralizada na vertical */
-    height: 18px;
+    /* height: 18px;
     width: 4px;
     background: #c4161c; /* vermelho estilo cinema */
-    border-radius: 2px;
-}
+    /* border-radius: 2px; 
+} 
 
 .sinopse p {
     color: #333;
