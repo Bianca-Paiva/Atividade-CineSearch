@@ -13,6 +13,7 @@ const respostaVoltarContainer = document.getElementById(
 const respostaTitulo = document.getElementById("resposta-titulo");
 const respostaQuantidade = document.getElementById("resposta-quantidade");
 // Elemenotos dos cards
+const containerCards = document.getElementById("resposta-container-cards");
 const respostaCards = document.getElementsByClassName("card");
 const respostaCardImagem = document.getElementsByClassName("card-imagem");
 const respostaCardInformacoes =
@@ -68,7 +69,7 @@ async function pesquisar() {
       respostaContainer.classList.remove("oculto");
       respostaTitulo.textContent = `Nenhum resultado para: ${termoDeBusca}`;
       respostaQuantidade.textContent = "";
-      document.getElementById("resposta-container-cards").innerHTML = "";
+      containerCards.innerHTML = "";
     }
   } catch (error) {
     console.error("Erro ao pesquisar: ", error);
@@ -78,9 +79,6 @@ async function pesquisar() {
 function exibirResultados(dados) {
   // Tira os espaços do íicio e fim
   const termoDeBusca = pesquisaInput.value.trim();
-
-  // Pega o container que contém os cards
-  const containerCards = document.getElementById("resposta-container-cards");
 
   // Limpa os cards anteriores
   containerCards.innerHTML = "";
@@ -96,10 +94,10 @@ function exibirResultados(dados) {
   // Cria um card para cada filme ou série encontrado
   dados.Search.forEach((filmeOuSerie) => {
     let limite = 28;
-    let titulo = filmeOuSerie.Title;
+    let titulo = filmeOuSerie.Title.trim();
 
     if (titulo.length > limite) {
-        titulo = titulo.substring(0, limite) + "..."
+      titulo = titulo.substring(0, limite) + "..."
     }
 
     const cardHtml = `
@@ -138,3 +136,10 @@ respostaVoltarContainer.addEventListener("click", () => {
 
 // Adiciona o evento de clique ao botão de pesquisa
 pesquisaBtn.addEventListener("click", pesquisar);
+
+// Adiciona o evento de clique ao teclado
+pesquisaInput.addEventListener("keypress", (event) => {
+  if (event.key === "Enter") {
+    pesquisar();
+  }
+});
