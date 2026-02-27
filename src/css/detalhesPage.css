@@ -1,0 +1,255 @@
+/* =========================
+   RESET E CONFIGURAÇÕES GERAIS
+========================= */
+
+body {
+    margin: 0;
+    /* Remove margem padrão do navegador */
+
+    font-family: sans-serif;
+    /* Define fonte base da aplicação */
+
+    background: #ffffff;
+    /* Cor de fundo padrão (tema claro) */
+
+    color: #111;
+    /* Cor padrão do texto (quase preto, mais suave que #000) */
+
+    transition: background 0.3s, color 0.3s;
+    /* Transição suave caso mude tema (ex: dark mode futuramente) */
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: sticky;
+    /* Faz o header "grudar" no topo ao rolar a página */
+
+    top: 0;
+    /* Define que ele fixa a partir do topo */
+
+    padding: 16px;
+    /* Espaçamento interno */
+
+    border-bottom: 1px solid #ddd;
+    /* Linha inferior para separar visualmente do conteúdo */
+
+    backdrop-filter: blur(8px);
+    /* Aplica efeito de desfoque no fundo (visual moderno) */
+}
+
+.container {
+    
+    display: flex;
+    /* Ativa flexbox */
+
+    justify-content: space-between;
+    /* Distribui os elementos nas extremidades */
+
+    align-items: center;
+    /* Alinha verticalmente ao centro */
+}
+
+.logo {
+    text-decoration: none;
+    /* Remove sublinhado padrão do link */
+
+    font-size: 24px;
+    /* Tamanho da marca */
+
+    font-weight: bold;
+    /* Deixa o texto mais forte */
+
+    color: inherit;
+    /* Herda a cor do elemento pai */
+}
+
+
+/* =========================
+   SKELETON LOADING - ESTRUTURA PRINCIPAL
+========================= */
+
+.details-skeleton {
+    display: grid;
+    /* Layout em grid */
+
+    grid-template-columns: 300px 1fr;
+    /* Duas colunas:
+       300px → poster
+       1fr → restante do conteúdo */
+
+    gap: 32px;
+    /* Espaçamento entre colunas */
+
+    animation: pulse 1.5s infinite ease-in-out;
+    /* Animação contínua para efeito de carregamento */
+}
+
+
+/* =========================
+   POSTER PLACEHOLDER
+========================= */
+
+.poster-skeleton {
+    aspect-ratio: 2/3;
+    /* Mantém proporção padrão de pôster de filme */
+
+    background: #e4e4e7;
+    /* Cor cinza clara simulando carregamento */
+
+    border-radius: 8px;
+    /* Cantos arredondados */
+}
+
+
+/* =========================
+   INFORMAÇÕES DO FILME
+========================= */
+
+.info-skeleton {
+    display: flex;
+    flex-direction: column;
+    /* Organiza conteúdo em coluna */
+
+    gap: 24px;
+    /* Espaçamento vertical entre blocos */
+}
+
+.title-skeleton {
+    height: 48px;
+    /* Altura simulando título */
+
+    width: 75%;
+    /* Largura proporcional para parecer texto real */
+
+    background: #e4e4e7;
+
+    border-radius: 6px;
+}
+
+
+/* =========================
+   BADGES (GÊNERO, ANO, ETC)
+========================= */
+
+.badges {
+    display: flex;
+    gap: 8px;
+    /* Espaço entre os selos */
+}
+
+.badge-skeleton {
+    height: 28px;
+    width: 80px;
+
+    background: #e4e4e7;
+
+    border-radius: 999px;
+    /* Forma totalmente arredondada (estilo pill) */
+}
+
+.badge-skeleton.small {
+    width: 64px;
+    /* Versão menor da badge */
+}
+
+
+/* =========================
+   METADADOS (ANO, DURAÇÃO...)
+========================= */
+
+.meta {
+    display: flex;
+    gap: 24px;
+}
+
+.line {
+    height: 16px;
+    /* Altura simulando linha de texto */
+
+    background: #e4e4e7;
+
+    border-radius: 4px;
+}
+
+/* Classes utilitárias de largura */
+
+.w-24 {
+    width: 96px;
+}
+
+.w-20 {
+    width: 80px;
+}
+
+.w-16 {
+    width: 64px;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.full {
+    width: 100%;
+}
+
+
+/* =========================
+   CARDS DE CONTEÚDO
+========================= */
+
+.card {
+    background: white;
+    /* Fundo branco para destacar do fundo */
+
+    padding: 24px;
+    /* Espaçamento interno */
+
+    border-radius: 8px;
+
+    border: 1px solid #ddd;
+    /* Contorno leve */
+}
+
+.section-title {
+    height: 24px;
+    width: 120px;
+
+    background: #e4e4e7;
+
+    border-radius: 6px;
+
+    margin-bottom: 16px;
+    /* Espaço abaixo do título */
+}
+
+.paragraph .line {
+    margin-bottom: 8px;
+    /* Espaçamento entre linhas simuladas */
+}
+
+
+/* =========================
+   GRID DE DETALHES
+========================= */
+
+.grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    /* Duas colunas iguais */
+
+    gap: 16px;
+}
+
+.detail-item {
+    height: 40px;
+
+    background: #e4e4e7;
+
+    border-radius: 6px;
+}

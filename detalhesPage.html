@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CineSearch | Detalhes</title>
+        <!-- Título exibido na aba do navegador -->
+        <link rel="stylesheet" href="./src/css/detalhesPage.css"/>
+        <!-- Importa o CSS específico da página de detalhes -->
+    </head>
+    <body>
+        <!-- Corpo da página (tudo que aparece visualmente) -->
+        <header class="header">
+            <!-- Cabeçalho principal da aplicação -->
+            <div class="container">
+                <!-- Container para centralizar e limitar largura do conteúdo -->
+                <a href="index.html" class="logo">
+                    <!-- Link que leva de volta para a página principal -->
+                    <span class="icon">
+                        <!-- Container do ícone da logo -->
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            class="bi bi-film"
+                            viewBox="0 0 16 16"
+                        >
+                            <!-- SVG do ícone de filme (estilo Bootstrap Icons)
+                                 fill="currentColor" faz o ícone herdar a cor do texto -->
+                            <path d="M0 1a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm4 0v6h8V1zm8 8H4v6h8zM1 1v2h2V1zm2 3H1v2h2zM1 7v2h2V7zm2 3H1v2h2zm-2 3v2h2v-2zM15 1h-2v2h2zm-2 3v2h2V4zm2 3h-2v2h2zm-2 3v2h2v-2zm2 3h-2v2h2z"/>
+                            <!-- Desenho vetorial do ícone -->
+                        </svg>
+                    </span>
+                    <span class="brand">CineSearch</span>
+                    <!-- Nome textual da marca -->
+                </a>
+            </div>
+        </header>
+        <main>
+            <!-- Conteúdo principal da página -->
+            <div class="details-skeleton">
+                <!-- Estrutura "skeleton loading"
+                     Placeholder visual enquanto os dados reais não carregam -->
+                <div class="poster-skeleton"></div>
+                <!-- Área reservada para o poster do filme -->
+                <div class="info-skeleton">
+                    <!-- Área de informações do filme -->
+                    <div class="title-skeleton"></div>
+                    <!-- Placeholder do título -->
+                    <div class="badges">
+                        <!-- Container de selos/informações rápidas -->
+                        <div class="badge-skeleton"></div>
+                        <div class="badge-skeleton small"></div>
+                        <!-- Versão menor de badge -->
+                    </div>
+                    <div class="meta">
+                        <!-- Informações secundárias (ano, duração, gênero etc.) -->
+                        <div class="line w-24"></div>
+                        <div class="line w-20"></div>
+                        <div class="line w-16"></div>
+                        <!-- Linhas com larguras diferentes simulando texto -->
+                    </div>
+                    <div class="card">
+                        <!-- Card de seção (ex: sinopse) -->
+                        <div class="section-title"></div>
+                        <!-- Título da seção -->
+                        <div class="paragraph">
+                            <!-- Simulação de parágrafo -->
+                            <div class="line full"></div>
+                            <div class="line full"></div>
+                            <div class="line w-75"></div>
+                            <!-- Última linha menor para dar realismo -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <!-- Card de detalhes técnicos -->
+                        <div class="section-title"></div>
+                        <div class="grid">
+                            <!-- Grade para exibir detalhes (diretor, elenco etc.)
+                                 Pode ser gerado dinamicamente via JS -->
+                            <!-- gera 6 blocos via JS se quiser -->
+                            <div class="detail-item"></div>
+                            <div class="detail-item"></div>
+                            <div class="detail-item"></div>
+                            <div class="detail-item"></div>
+                            <div class="detail-item"></div>
+                            <div class="detail-item"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <script src="./src/js/detalhesPage.js" defer></script>
+        <!-- Importa o JavaScript da página.
+             defer faz o script executar apenas após o HTML ser carregado -->
+    </body>
+</html>
