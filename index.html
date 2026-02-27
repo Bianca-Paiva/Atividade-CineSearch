@@ -1,11 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/css/styles.css" />
+    <title>CineSearch</title>
 </head>
-<body>
-    
+
+<body class="start">
+    <header id="cabecalho"></header>
+    <main>
+        <div id="pesquisa-container"> <!-- manipular display -->
+            <h1 id="pesquisa-titulo">CineSearch</h1>
+            <p id="pesquisa-subtitulo">Pesquise para encontrar informações detalhadas sobre filmes e séries</p>
+            <div id="pesquisa-input-container">
+                <input type="text" placeholder="Digite o nome do filme ou série..." id="pesquisa-input" required /> <!-- manipular valor digitado -->
+                <button id="pesquisa-btn" type="submit"> <!-- manipular pesquisa -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-search icone-lupa" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                    Buscar
+                </button>
+            </div>
+            <p id="pesquisa-aviso" class="oculto">Por favor, digite um nome para pesquisar</p>
+        </div>
+        <div id="resposta-container" class="oculto"> <!-- manipular display -->
+            <div id="resposta-voltar-container"> <!-- manipular display -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                
+                    class="bi bi-arrow-left-short icone-voltar" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5" />
+                </svg>
+                <p>Voltar à busca</p>
+            </div>
+            <h1 id="resposta-titulo"></h1> <!-- manipular texto -->
+            <p id="resposta-quantidade"></p> <!-- manipular texto -->
+            <div id="resposta-container-cards">
+                <!-- cards dos filmes e séries encontrados-->
+            </div>
+        </div>
+    </main>
+
+    <script src="/src/js/componentes.js"></script>
+    <script src="/src/js/script.js"></script>
 </body>
+
 </html>
