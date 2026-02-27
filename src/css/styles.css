@@ -152,6 +152,7 @@ main {
     transition: all 0.2s ease;
 }
 
+
 #pesquisa-input {
     font-size: 1.2rem;
     color: var(--color-gray-theree);
@@ -162,6 +163,10 @@ main {
     /* Oculpa o restante da largura do container */
     padding: 30px;
     outline: none;
+}
+
+#pesquisa-input:autofill  {
+    background-color: var(--color-red-four);
 }
 
 #pesquisa-input::placeholder {
@@ -198,7 +203,7 @@ main {
     fill: currentColor;
 }
 
-#pesquisa-aviso.oculto {
+#pesquisa-aviso {
     display: flex;
     font-size: 1.2rem;
     color: var(--color-red-one);
