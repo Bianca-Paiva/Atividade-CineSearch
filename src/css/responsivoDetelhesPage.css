@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+  .detalhes {
+    grid-template-columns: 1fr;
+  }
+
+  .poster {
+    max-width: 100%;
+  }
+
+  .conteudo-filme {
+    max-width: 100%;
+  }
+
+  .listaInformacoes {
+    grid-template-columns: 1fr;
+  }
+}

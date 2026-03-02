@@ -4,6 +4,8 @@ const pesquisaContainer = document.getElementById("pesquisa-container");
 const pesquisaInput = document.getElementById("pesquisa-input");
 const pesquisaBtn = document.getElementById("pesquisa-btn");
 const pesquisaAviso = document.getElementById("pesquisa-aviso");
+const params = new URLSearchParams(window.location.search);
+const imdbID = params.get("id");
 
 // Elementos do container com cards dos resultados da pesquisa
 const respostaContainer = document.getElementById("resposta-container");
@@ -49,7 +51,7 @@ async function pesquisar() {
     return;
   }
 
-  // Tira os espaços do íicio e fim
+  // Tira os espaços do ínicio e fim
   const termoDeBusca = pesquisaInput.value.trim();
   // Codifica só o parâmetro
   const url = `https://www.omdbapi.com/?s=${encodeURIComponent(termoDeBusca)}&apikey=${chaveApi}`;
@@ -77,7 +79,7 @@ async function pesquisar() {
 }
 
 function exibirResultados(dados) {
-  // Tira os espaços do íicio e fim
+  // Tira os espaços do ínicio e fim
   const termoDeBusca = pesquisaInput.value.trim();
 
   // Limpa os cards anteriores
@@ -101,7 +103,7 @@ function exibirResultados(dados) {
     }
 
     const cardHtml = `
-            <div class="card" onclick="abrirDetalhes('${filmeOuSerie.imdbID}')">
+            <div class="card" onclick="window.location.href='detalhesPage.html?id=${filmeOuSerie.imdbID}'">
                 <img class="card-imagem" src=" ${filmeOuSerie.Poster}" alt="${filmeOuSerie.Title}" />
                 <div class="card-informacoes">
                     <h2 class="card-titulo">${titulo}</h2>
@@ -117,6 +119,22 @@ function exibirResultados(dados) {
     containerCards.innerHTML += cardHtml;
   });
 }
+
+const chaveApi = "49cfe1b3";
+const url = `https://www.omdbapi.com/?i=${imdbID}&apikey=${chaveApi}`;
+
+async function carregarDetalhes() {
+  try {
+    const response = await fetch(url);
+    const dados = await response.json();
+
+    preencherTela(dados);
+  } catch (erro) {
+    console.error("Erro ao carregar detalhes:", erro);
+  }
+}
+
+carregarDetalhes();
 
 // Adiciona o evento de clique ao botão de voltar
 respostaVoltarContainer.addEventListener("click", () => {

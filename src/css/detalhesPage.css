@@ -6,7 +6,8 @@ body {
     margin: 0;
     /* Remove margem padrão do navegador */
 
-    font-family: sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    ;
     /* Define fonte base da aplicação */
 
     background: var(--cor-branco);
@@ -17,6 +18,8 @@ body {
 
     transition: background 0.3s, color 0.3s;
     /* Transição suave caso mude tema (ex: dark mode futuramente) */
+
+    background-color: var(--cor-bg-tela);
 }
 
 :root {
@@ -24,6 +27,8 @@ body {
     --cor-cinza-carregamento: #f3f3f3;
     --texto-preto: #111;
     --border: #ddd;
+    --cor-bg-tela: #f5f5f5;
+    --color-shadow-one: #bbbbbb60;
     --color-red-one: #bf0e26;
     --color-red-two: #9e1424;
     --color-red-three: #851b24;
@@ -38,25 +43,22 @@ body {
 ========================= */
 
 .header {
-    position: sticky;
-    /* Faz o header "grudar" no topo ao rolar a página */
-
     top: 0;
     /* Define que ele fixa a partir do topo */
 
-    padding: 16px;
+    padding: 17.5px;
     /* Espaçamento interno */
 
-    border-bottom: 1px solid var(--border);
-    /* Linha inferior para separar visualmente do conteúdo */
-
-    backdrop-filter: blur(8px);
-    /* Aplica efeito de desfoque no fundo (visual moderno) */
+    background-color: var(--cor-branco);
+    box-shadow: 5px 5px 10px var(--color-shadow-one);
 }
 
 .container {
+    height: 45px;
     display: flex;
     /* Ativa flexbox */
+
+    flex-direction: row;
 
     justify-content: space-between;
     /* Distribui os elementos nas extremidades */
@@ -65,19 +67,35 @@ body {
     /* Alinha verticalmente ao centro */
 }
 
+
+.iconeFilme {
+    width: 24px;
+    height: 30px;
+    margin: 15px;
+}
+
 .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+
     text-decoration: none;
     /* Remove sublinhado padrão do link */
 
-    font-size: 24px;
+    font-size: 1.4rem;
     /* Tamanho da marca */
 
-    font-weight: bold;
+    font-weight: 700;
     /* Deixa o texto mais forte */
+
+    color: var(--color-red-two);
 }
 
-.brand {
+.logoTexto {
+
     background: var(--gradient-color-red);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -86,8 +104,41 @@ body {
    MAIN
 ========================= */
 main {
-    padding: 48px 24px;
+    padding: 15px 24px;
 }
+
+.icone-voltar {
+    width: 1.5rem;
+    aspect-ratio: 1/1;
+    fill: currentColor;
+}
+
+#resposta-voltar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    max-width: 1000px; /* Escolha um valor e mantenha igual em todos */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+#resposta-voltar-container:hover {
+    color: var(--color-red-one);
+    transition: all 0.2s ease;
+    transform: scale(1.02);
+}
+
 
 /* =======================================
    SKELETON LOADING - ESTRUTURA PRINCIPAL
@@ -97,17 +148,23 @@ main {
     display: grid;
     /* Layout em grid */
 
-    align-items: start; /* impede que o poster estique */
+    align-items: center;
+    /* impede que o poster estique */
+
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 
     grid-template-columns: 300px 1fr;
     /* Duas colunas:
        300px → poster
        1fr → restante do conteúdo */
 
-    gap: 32px;
+    gap: 40px;
     /* Espaçamento entre colunas */
 
-    animation: pulse 1.5s infinite ease-in-out;
+    animation: pulse 2s infinite ease-in-out;
     /* Animação contínua para efeito de carregamento */
 }
 
@@ -137,57 +194,27 @@ main {
 ========================= */
 
 .sinopse {
-    background: #ffffff; /* Fundo branco como na imagem */
-    border: 1px solid #e6e6e6; /* Borda bem suave que dá o efeito de card */
-    padding: 24px; /* Espaçamento interno confortável */
-    border-radius: 8px; /* Cantos levemente arredondados */
+    background: var(--cor-branco);
+    /* Fundo branco como na imagem */
+
+    padding: 24px;
+    /* Espaçamento interno confortável */
+    border-radius: 8px;
+    /* Cantos levemente arredondados */
     margin-top: 32px;
+    box-shadow: 0 10px 25px 10px rgba(0, 0, 0, 0.08);
 }
 
 .sinopse h2 {
     font-size: 20px;
     font-weight: bold;
-    color: #111; /* Preto forte para o título */
-    margin-top: 0;
-    margin-bottom: 16px;
-    position: relative;
-    padding-left: 12px; /* Espaço para a barra vermelha não colar no texto */
-}
-
-.sinopse h2::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%); /* Garante que a barra fique perfeitamente centralizada na vertical */
-    height: 20px; /* Altura proporcional ao texto */
-    width: 3px; /* Espessura da barra */
-    background: #9e1424; /* Cor vermelha puxando da sua paleta */
-    border-radius: 2px;
-}
-
-.sinopse p {
-    color: #444; /* Cinza escuro para facilitar a leitura */
-    line-height: 1.6;
-    font-size: 15px; /* Tamanho confortável para texto longo */
-    margin: 0;
-}
-/* .sinopse {
-    background: var(--cor-branco);
-    border: 1px solid #e6e6e6;
-    padding: 24px 28px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    margin-top: 32px;
-    position: relative;
-}
-
-.sinopse h2 {
-    font-size: 20px;
+    color: #111;
+    /* Preto forte para o título */
     margin-top: 0;
     margin-bottom: 16px;
     position: relative;
     padding-left: 12px;
+    /* Espaço para a barra vermelha não colar no texto */
 }
 
 .sinopse h2::before {
@@ -195,174 +222,196 @@ main {
     position: absolute;
     left: 0;
     top: 50%;
-    transform: translateY(-50%); /* Garante que a barra fique perfeitamente centralizada na vertical */
-    height: 18px;
-    width: 4px;
-    background: #c4161c; /* vermelho estilo cinema */
+    transform: translateY(-50%);
+    /* Garante que a barra fique perfeitamente centralizada na vertical */
+    height: 20px;
+    /* Altura proporcional ao texto */
+    width: 3px;
+    /* Espessura da barra */
+    background: #9e1424;
+    /* Cor vermelhas puxando da sua paleta */
     border-radius: 2px;
 }
 
 .sinopse p {
     color: #333;
+    /* Cinza escuro para facilitar a leitura */
     line-height: 1.6;
-} */
+    font-size: 15px;
+    /* Tamanho confortável para texto longo */
+    margin: 0;
+}
 
 /* =========================
-   INFORMAÇÕES
+   tituloInformacoes
 ========================= */
-
-/* CONTAINER PRINCIPAL */
-.detalhes {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 40px;
-  align-items: start;
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
 
 /* POSTER */
 .poster img {
-  width: 100%;
-  border-radius: 16px;
-  display: block;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    border-radius: 16px;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* CONTEÚDO AO LADO */
-.conteudo-filme {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 700px;
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: none; /* Permite que o texto ocupe o espaço disponível no grid */
 }
 
 /* TÍTULO */
-.titulo-filme {
-  font-size: 40px;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.1;
+.titulo {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
 }
 
-/* BADGES */
-.badges {
-  display: flex;
-  gap: 10px;
+/* CATEGORIA */
+.categoria {
+    display: flex;
+    gap: 10px;
 }
 
-.badge {
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.badge.red {
-  background: var(--gradient-color-red); /* vermelho estilo streaming */
-  color: var(--cor-branco);
+.tipo {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--gradient-color-red);
+    color: var(--cor-branco);
 }
 
 /* META (ano • duração) */
-.meta {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 14px;
-  color: #666;
+.detalhes-midia {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 15px;
+    font-size: 14px;
+    color: #666;
 }
 
-/* SINOPSE */
-.sinopse h2 {
-  font-size: 20px;
-  margin-bottom: 8px;
+.detalhesAno {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.sinopse p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #444;
-  margin: 0;
+.detalhesDuracao {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-section {
-  max-width: 900px;
-  margin: 40px auto;
-  background: var(--cor-branco);
-  border-radius: 12px;
-  padding: 32px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  font-family: "Segoe UI", sans-serif;
-  color: #222;
+.secaoInformacoes {
+    max-width: 1000px; /* Escolha um valor e mantenha igual em todos */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background: var(--cor-branco);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 10px 25px 10px rgba(0, 0, 0, 0.08);
 }
 
 /* TÍTULO */
-.informações h2 {
-  position: relative;
-  font-size: 22px;
-  margin-bottom: 30px;
-  padding-left: 14px;
+.tituloInformacoes h2 {
+    position: relative;
+    font-size: 22px;
+    margin-bottom: 30px;
+    padding-left: 14px;
 }
 
-.informações h2::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 2px;
-  width: 4px;
-  height: 22px;
-  background: #b11226;
-  border-radius: 2px;
+.tituloInformacoes h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 4px;
+    height: 22px;
+    background: #b11226;
+    border-radius: 2px;
 }
 
 /* GRID PRINCIPAL */
-.lista-informacoes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px 40px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid #ddd;
+.listaInformacoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ddd;
 }
 
 /* CADA ITEM */
-.lista-informacoes p {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  margin: 0;
-  color: #444;
+.listaInformacoes p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin: 0;
+    color: #444;
 }
 
-.lista-informacoes svg {
-  flex-shrink: 0;
-  color: #777;
+.listaInformacoes svg {
+    flex-shrink: 0;
+    color: #777;
 }
 
-.lista-informacoes strong {
-  font-weight: 600;
-  color: #666;
+.listaInformacoes strong {
+    font-weight: 600;
+    color: #666;
 }
 
 /* SEÇÕES DE BAIXO */
-section > div:nth-of-type(3) p,
-section > div:nth-of-type(4) p {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  margin-top: 25px;
-  padding-top: 20px;
+.secaoInformacoes>div:nth-of-type(3) svg,
+.secaoInformacoes>div:nth-of-type(4) svg {
+    flex-shrink: 0;
+    color: #777;
 }
 
+.secaoInformacoes>div:nth-of-type(3) strong,
+.secaoInformacoes>div:nth-of-type(4) strong {
+    font-weight: 600;
+    color: #666;
+}
+
+.secaoInformacoes>div:nth-of-type(3) p,
+.secaoInformacoes>div:nth-of-type(4) p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-top: 25px;
+    padding-top: 20px;
+}
+
+.secaoInformacoes>div:nth-of-type(3) p {
+    color: #444;
+}
+
+.secaoInformacoes>div:nth-of-type(3) p {
+    padding-bottom: 35px;
+    border-bottom: 1px solid #ddd;
+}
+
+.secaoInformacoes>div:nth-of-type(4) p {
+    padding-top: 5px;
+}
+
+
 /* BOX DE PRÊMIOS */
-section > div:nth-of-type(4) span {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 12px 16px;
-  background: #f8f3d6;
-  border: 1px solid #e5d78f;
-  border-radius: 8px;
-  font-weight: 500;
+.secaoInformacoes>div:nth-of-type(4) span {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 12px 16px;
+    background: #f8f3d6;
+    border: 1px solid #e5d78f;
+    border-radius: 8px;
+    font-weight: 500;
 }
